@@ -1,6 +1,7 @@
 let myLibrary = [];
 let html = '', htmlLoop = '';
 
+display();
 function Book(title, author){
     this.title = title;
     this.author = author;
@@ -12,6 +13,7 @@ function addBookToLibrary(title, author) {
 }
 
 function display(){
+    html='';
     myLibrary.forEach((value, index)=>{
         htmlLoop = `<div>
         <div><strong>TITLE: <\strong>${value.title}</div>
@@ -22,15 +24,24 @@ function display(){
     document.querySelector('.container').innerHTML = html;
 }
 
-document.querySelector('.new').addEventListener('click', function(){
-    let htmlIn = `<div>
-        <label for="book-name"><strong>Title: </strong></label>
-        <input type="text" name="book-name" id="book-name">
-        <label for="book-author"><strong>Author: </strong></label>
-        <input type="text" name="book-author" id="book-author">
-        <button class="submit">Submit</button>
-    </div>`;
-    document.querySelector('.form').innerHTML = htmlIn;
+let modal = document.querySelector('.form-dialog');
+document.querySelector('.new').addEventListener('click', ()=>{
+    modal.showModal();
 });
 
-let submit = document.querySelector('.submit');
+document.querySelector('.x').addEventListener('click', ()=>{
+    modal.close();
+});
+
+document.querySelector('.submit').addEventListener('click', ()=>{
+    let title = document.querySelector('#book-name');
+    let author = document.querySelector('#book-author');
+    if(title.value.trim() !== "" && author.value.trim() !== ""){
+        addBookToLibrary(title.value, author.value);
+        display();
+    }
+    title.value = '';
+    author.value = '';
+})
+
+display();
