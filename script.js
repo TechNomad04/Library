@@ -15,6 +15,7 @@ function display(){
     html='';
     myLibrary.forEach((value, index)=>{
         htmlLoop = `<div class="books book${index}">
+        <img src="book.jpeg">
         <div><strong>TITLE:</strong> ${value.title}</div>
         <div><strong>AUTHOR:</strong> ${value.author}</div>
         <button class="remove-button remove${index}">Remove</button>
