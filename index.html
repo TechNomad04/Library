@@ -5,18 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <button class="new">New</button>
     <dialog class="form-dialog">
         <button class="x">X</button>
-        <label for="book-name"><strong>Title: </strong></label>
-        <input type="text" name="book-name" id="book-name">
-        <label for="book-author"><strong>Author: </strong></label>
-        <input type="text" name="book-author" id="book-author">
+        <div class="inputs">
+            <label for="book-name"><strong>Title: </strong></label>
+            <input type="text" name="book-name" id="book-name">
+            <label for="book-author"><strong>Author: </strong></label>
+            <input type="text" name="book-author" id="book-author">
+        </div>
         <button class="submit">Submit</button>
     </dialog>
-    <div class="form"></div>
     <div class="container"></div>
     <script src="script.js"></script>
 </body>
