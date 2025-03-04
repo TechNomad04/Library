@@ -11,17 +11,25 @@ function addBookToLibrary(title, author) {
     let book = new Book(title, author);
     myLibrary.push(book);
 }
-
 function display(){
     html='';
     myLibrary.forEach((value, index)=>{
-        htmlLoop = `<div>
-        <div><strong>TITLE: <\strong>${value.title}</div>
-        <div><strong>AUTHOR: <\strong>${value.author}</div>
+        htmlLoop = `<div class="books book${index}">
+        <div><strong>TITLE:</strong> ${value.title}</div>
+        <div><strong>AUTHOR:</strong> ${value.author}</div>
+        <button class="remove-button remove${index}">Remove</button>
         </div>`;
         html += htmlLoop;
     });
     document.querySelector('.container').innerHTML = html;
+
+    myLibrary.forEach((value, index)=>{
+        let button = document.querySelector(`.remove${index}`);
+        button.addEventListener('click', ()=>{
+            myLibrary.splice(index, 1);
+            display();
+        });
+    });
 }
 
 let modal = document.querySelector('.form-dialog');
@@ -42,6 +50,5 @@ document.querySelector('.submit').addEventListener('click', ()=>{
     }
     title.value = '';
     author.value = '';
-})
-
-display();
+    modal.close();
+});
